@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding makes text and symbols display correctly. -->
+  <meta charset="UTF-8" />
+  <!-- Let the page scale to the device width on phones and tablets. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- The title appears in the browser tab and search results. -->
+  <title>Rudra Tiwari | Frontend Developer, Trader & LIC Advisor</title>
+  
+  <!-- Connect to Google Fonts and load the typefaces used by the design. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Load the CSS file that controls the page's colors, layout, and appearance. -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#home" class="logo">RT.</a>
+
+      <!-- This button opens/closes the mobile menu; script.js listens for its clicks. -->
+      <button class="nav-toggle-btn" id="menuBtn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="siteNav">
+        <!-- Each # link jumps to the page section with the matching id. -->
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero Section -->
+    <!-- The id lets navigation links jump here; classes connect this markup to CSS. -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow-badge">Frontend Developer · Trader · LIC Advisor</span>
+          <h1 class="hero-title">Rudra Tiwari</h1>
+          <p class="hero-text">
+            I build clean, simple websites and share practical trading views and basic insurance guidance.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#portfolio" class="btn btn-primary">View Portfolio</a>
+            <a href="Resume.pdf" class="btn btn-outline" download>Download CV</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-row">
+            <span class="hero-card-label">Education</span>
+            <span class="hero-card-value">Bachelor of Commerce</span>
+          </div>
+          <div class="hero-card-divider"></div>
+          <div class="hero-card-row">
+            <span class="hero-card-label">Specialty</span>
+            <span class="hero-card-value">Market Analysis & Web Development</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container">
+        <p class="section-eyebrow">About</p>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-lead">
+          I am Rudra Tiwari, a Commerce graduate with an interest in web development and trading. I like building clean and simple websites and learning new digital skills.
+        </p>
+
+        <!-- Reusing grid-3 and card classes keeps these information cards consistent. -->
+        <div class="grid-3">
+          <div class="card">
+            <h3 class="card-title">Commerce Background</h3>
+            <p class="card-text">I understand business basics, finance, and practical money topics.</p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Web Development</h3>
+            <p class="card-text">I enjoy creating clean, simple, and responsive website layouts.</p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Trading & LIC Guidance</h3>
+            <p class="card-text">I share simple trading views and basic insurance support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section section-alt">
+      <div class="container">
+        <p class="section-eyebrow">Skills</p>
+        <h2 class="section-title">Skills</h2>
+        <p class="section-lead">Here are the skills and areas I am currently working with.</p>
+
+        <!-- A list is used because these are a group of related skills. -->
+        <ul class="skills-list">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>Python Basics</li>
+          <li>Trading Analysis</li>
+          <li>LIC Guidance</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+      <div class="container">
+        <p class="section-eyebrow">Services</p>
+        <h2 class="section-title">Services</h2>
+
+        <!-- Each service is one card inside the shared three-column grid. -->
+        <div class="grid-3">
+          <div class="card card-service">
+            <h3 class="card-title">Web Development</h3>
+            <p class="card-text">Clean and responsive websites using HTML and CSS.</p>
+            <a href="#portfolio" class="card-link">View Work →</a>
+          </div>
+          <div class="card card-service">
+            <h3 class="card-title">Market Analysis</h3>
+            <p class="card-text">Practical trading view and market understanding.</p>
+            <a href="https://angel-one.onelink.me/Wjgr/6eoesm6m" class="card-link" target="_blank" rel="noopener">Open Demat Account →</a>
+          </div>
+          <div class="card card-service">
+            <h3 class="card-title">LIC Guidance</h3>
+            <p class="card-text">Basic insurance guidance and support.</p>
+            <a href="#contact" class="card-link">Contact Me →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section section-alt">
+      <div class="container">
+        <p class="section-eyebrow">Portfolio</p>
+        <h2 class="section-title">My Projects</h2>
+        <p class="section-lead">Here are some of my featured projects.</p>
+
+        <!-- This grid displays project cards; its columns adapt to screen size in style.css. -->
+        <div class="project-grid">
+          <!-- Live Portfolio Project Card -->
+          <div class="card card-project">
+            <span class="project-tag">Live Project</span>
+            <h3 class="card-title">Business Website</h3>
+            <p class="card-text">Simple and responsive website for the digital solution business.</p>
+            <a href="https://shahnawaz1366.github.io/Portfolio/" class="card-link" target="_blank" rel="noopener">View Live Site →</a>
+          </div>
+          <div class="card card-project">
+            <span class="project-tag">Personal Portfolio</span>
+            <h3 class="card-title">Tata Capital Sales Professional</h3>
+            <p class="card-text">A professional portfolio showcasing a Tata Capital sales professional's experience, expertise, and services.</p>
+            <!-- Replace # with the project's web address when it is ready. -->
+            <a href="#" class="card-link">Add project link →</a>
+          </div>
+          <div class="card card-project">
+            <span class="project-tag">Stock Market Project</span>
+            <h3 class="card-title">Stock Market Journal</h3>
+            <p class="card-text">A stock market journal for tracking market observations, trade ideas, and performance.</p>
+            <!-- Replace # with the project's web address when it is ready. -->
+            <a href="#" class="card-link">Add project link →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="container">
+        <p class="section-eyebrow">Contact</p>
+        <h2 class="section-title">Contact Me</h2>
+        <p class="section-lead">Have a project, trading question, or LIC-related query?</p>
+
+        <!-- Get In Touch Card -->
+        <div class="contact-card contact-card-solo">
+          <h3 class="card-title">Get in Touch</h3>
+          <p class="card-text">
+            The fastest way to reach me is directly via email at
+            <a class="inline-link" href="mailto:rptiwari1130@gmail.com">rptiwari1130@gmail.com</a>.
+          </p>
+          <!-- mailto: opens the visitor's email app with your address filled in. -->
+          <div class="contact-card-actions">
+            <a class="btn btn-primary contact-email-btn" href="mailto:rptiwari1130@gmail.com">Email Me Direct</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="#home" class="logo">RT.</a>
+        <p class="footer-tagline">Frontend Developer | Trader | LIC Advisor</p>
+      </div>
+
+      <nav class="footer-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <!-- Contact Button in Footer -->
+      <a href="mailto:rptiwari1130@gmail.com" class="btn btn-primary footer-btn">Contact Me</a>
+    </div>
+    <p class="footer-copyright">© 2026 Rudra Tiwari. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Load JavaScript after the page markup so it can find the menu elements. -->
+  <script src="script.js"></script>
+
+</body>
+</html>

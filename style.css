@@ -1,0 +1,482 @@
+/* Reusable values (custom properties) are defined here and used with var(--name). */
+:root {
+  --bg: #0e1218;
+  --surface: #161c25;
+  --surface-2: #1e2632;
+  --border: #2a3341;
+  --text: #eef1f4;
+  --muted: #8b96a3;
+  --ember: #f0973a;
+  --ice: #5fb8d1;
+  --max-width: 1120px;
+  --radius: 12px;
+}
+
+* {
+  /* Apply sizing consistently and remove browser-default spacing. */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Make jumps to section links scroll smoothly instead of jumping instantly. */
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Set the default page background, text color, font, and line spacing. */
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  /* Links inherit their surrounding text color and have no default underline. */
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  /* Center the content and stop it becoming too wide on large screens. */
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header & Nav */
+.site-header {
+  /* Keep navigation visible at the top while scrolling. */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  /* Place the logo and navigation on opposite sides in one row. */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo {
+  /* Give the short site logo its accent color and display font. */
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ember);
+}
+
+.site-nav {
+  /* Arrange navigation links in a horizontal row with even gaps. */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-nav a {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.site-nav a:hover {
+  /* Highlight a link when the mouse pointer is over it. */
+  color: var(--text);
+}
+
+/* Show which page section is currently active while the visitor scrolls. */
+.site-nav a.active:not(.nav-cta) {
+  color: var(--ember);
+  font-weight: 600;
+}
+
+/* Give the active Contact button an outline while keeping its button colors. */
+.site-nav a.nav-cta.active {
+  box-shadow: 0 0 0 2px var(--text);
+}
+
+.nav-cta {
+  /* Style the Contact link as a button. */
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: var(--ember);
+  color: #1a1108 !important;
+  font-weight: 600;
+}
+
+.nav-toggle-btn {
+  /* Hidden on desktop; displayed by the mobile media query below. */
+  display: none;
+  background: transparent;
+  border: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.nav-toggle-btn span {
+  /* Each span is one horizontal line in the hamburger icon. */
+  display: block;
+  height: 2px;
+  width: 25px;
+  background: var(--text);
+}
+
+/* Buttons */
+.btn {
+  /* Shared button spacing and text styling. */
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  /* Filled accent button. */
+  background: var(--ember);
+  color: #1a1108;
+}
+
+.btn-outline {
+  /* Transparent button with a border. */
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* Hero Section */
+.hero {
+  /* Add space around the opening area and separate it from the next section. */
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-inner {
+  /* Use two columns for the introduction and details card. */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.eyebrow-badge {
+  /* Small highlighted label above the main heading. */
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: var(--surface);
+  color: var(--ice);
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+}
+
+.hero-title {
+  /* Main page heading, styled with the display font. */
+  font-family: 'Fraunces', serif;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero-text {
+  /* Supporting introduction text uses the softer muted color. */
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.hero-actions {
+  /* Keep the hero buttons together in a row. */
+  display: flex;
+  gap: 10px;
+}
+
+.hero-card {
+  /* Box styling for the education and specialty details. */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.hero-card-row {
+  /* Stack each detail label above its value. */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-card-label {
+  /* Smaller uppercase labels make each detail easier to scan. */
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.hero-card-value {
+  /* Make the detail itself more prominent than its label. */
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.hero-card-divider {
+  /* Thin line separating the two details in the hero card. */
+  height: 1px;
+  background: var(--border);
+  margin: 15px 0;
+}
+
+/* Common Sections */
+.section {
+  /* Shared vertical spacing and divider for the main page sections. */
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-alt {
+  /* Alternate background helps visually distinguish selected sections. */
+  background-color: var(--surface);
+}
+
+.section-eyebrow {
+  /* Small colored section label, such as About or Skills. */
+  color: var(--ice);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.section-title {
+  /* Shared style for the large heading at the top of each section. */
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.section-lead {
+  /* Muted introductory text below a section heading. */
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+
+/* Responsive Grid Layout */
+.grid-3 {
+  /* Display cards in three equal columns with space between them. */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  /* Shared appearance and vertical layout for informational cards. */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-alt .card {
+  /* Cards on an alternate section use a slightly lighter surface. */
+  background: var(--surface-2);
+}
+
+.card-title {
+  /* Heading inside a card. */
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  /* Description text expands to fill available space, aligning card links. */
+  color: var(--muted);
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.card-link {
+  /* Style links placed at the bottom of a card. */
+  margin-top: 15px;
+  color: var(--ice);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Skills Section */
+.skills-list {
+  /* Remove bullets and stack skills with consistent spacing. */
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skills-list li {
+  /* Make each skill look like a small bordered panel. */
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Portfolio Section */
+.project-grid {
+  /* Show three project cards across on wide screens. */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.project-tag {
+  /* Small colored category label at the top of each project card. */
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(240, 151, 58, 0.2);
+  color: var(--ember);
+  font-size: 0.75rem;
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
+
+/* Contact Card */
+.contact-card {
+  /* Shared panel appearance for the contact information. */
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+}
+
+.contact-card-solo {
+  /* Keep the single contact card centered and comfortably narrow. */
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-card-actions {
+  /* Leave room between the contact text and its email button. */
+  margin-top: 20px;
+}
+
+.inline-link {
+  /* Accent color distinguishes the email link within a paragraph. */
+  color: var(--ice);
+}
+
+/* Footer */
+.site-footer {
+  /* Add breathing room around the bottom area of the page. */
+  padding: 40px 0 20px;
+}
+
+.footer-inner {
+  /* Arrange footer details, links, and button in one row on larger screens. */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.footer-tagline {
+  /* De-emphasize the short role description below the logo. */
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.footer-nav {
+  /* Place footer navigation links in a row. */
+  display: flex;
+  gap: 15px;
+}
+
+.footer-nav a {
+  /* Use muted text so footer links don't overpower the page content. */
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.footer-btn {
+  /* Separate the contact button from the footer links. */
+  margin-left: 10px;
+}
+
+.footer-copyright {
+  /* Center and de-emphasize the copyright notice. */
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 20px;
+}
+
+/* Responsive Styles for Mobile Devices */
+@media (max-width: 860px) {
+  /* These rules apply on tablets and smaller screens. */
+  .hero-inner {
+    /* Stack the hero intro and details card into one column. */
+    grid-template-columns: 1fr;
+  }
+
+  .grid-3 {
+    /* Use two columns for the general card grids. */
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-grid {
+    /* Use two columns for project cards at tablet width. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  /* These rules apply on phones; they override wider-screen layouts. */
+  .grid-3 {
+    /* Stack general cards vertically on narrow screens. */
+    grid-template-columns: 1fr;
+  }
+
+  .project-grid {
+    /* Stack project cards vertically on narrow screens. */
+    grid-template-columns: 1fr;
+  }
+
+  .nav-toggle-btn {
+    /* Show the hamburger button only on mobile. */
+    display: flex;
+  }
+
+  .site-nav {
+    /* Turn the desktop navigation into a hidden, full-width dropdown. */
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-nav a {
+    /* Give each mobile menu item a larger touch-friendly area. */
+    display: block;
+    padding: 8px 0;
+  }
+
+  .footer-inner {
+    /* Stack footer content and center it on phones. */
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
