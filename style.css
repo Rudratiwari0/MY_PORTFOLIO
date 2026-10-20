@@ -1,0 +1,652 @@
+/* ==============================
+ COLORS, FONTS AND SIZES
+ These are the settings of the whole site.
+ Each one has a name (like --bg) that is used below.
+ To change a color, change it here only.
+ This is LIGHT MODE.
+ ============================== */
+:root {
+  --bg: #F8F6EE;   /* page background */
+  --surface: #F0ECDF;   /* boxes and some sections */
+  --surface-2: #FBFAF5;   /* boxes inside the different background sections */
+  --border: #D9C9B2;   /* thin lines around boxes */
+  --text: #2E3A2F;   /* main text color */
+  --muted: #5B6E4E;   /* lighter text color */
+  --ember: #C96F4F;   /* main accent color (buttons) */
+  --ember-soft: rgba(201, 111, 79, 0.14);   /* light version of the accent color */
+  --ice: #6B7F5B;   /* second color: sage green (links, small labels) */
+  --gold: #D9C9B2;   /* third color (not used much) */
+  --header-bg: rgba(248, 246, 238, 0.95);   /* menu bar background */
+  --button-bg: #2E3A2F;   /* main buttons: dark green */
+  --button-text: #F8F6EE;   /* text on the main buttons */
+
+  --font-display: 'Fraunces', serif;   /* headings font */
+  --font-body: 'Inter', sans-serif;   /* normal text font */
+  --font-mono: 'IBM Plex Mono', monospace;   /* small labels font */
+
+  --max-width: 1120px;   /* widest the content can be */
+  --radius: 14px;   /* rounded corners of big boxes */
+  --radius-sm: 8px;   /* rounded corners of small boxes */
+}
+
+/* ==============================
+ DARK MODE COLORS
+ script.js adds the class "dark" to the page when
+ the Dark button is clicked. Then these colors
+ are used instead of the light ones above.
+ ============================== */
+body.dark {
+  --bg: #0e1218;
+  --surface: #161c25;
+  --surface-2: #1e2632;
+  --border: #2a3341;
+  --text: #eef1f4;
+  --muted: #8b96a3;
+  --ember: #f0973a;
+  --ember-soft: rgba(240, 151, 58, 0.12);
+  --ice: #5fb8d1;
+  --gold: #d4b06a;
+  --header-bg: rgba(14, 18, 24, 0.95);
+  --button-bg: #f0973a;
+  --button-text: #1a1108;
+}
+
+/* ==============================
+ RESET
+ Removes the default spacing of the browser.
+ ============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;   /* smooth scrolling when a menu link is clicked */
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul { list-style: none; }
+
+/* Keeps the content in the middle of the page */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==============================
+ TOP MENU BAR
+ It stays at the top of the screen while scrolling.
+ ============================== */
+.site-header {
+  position: sticky;   /* stays at the top while scrolling */
+  top: 0;
+  z-index: 50;
+
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.logo-mark {
+  color: var(--ember);
+  display: inline-flex;
+}
+
+/* The menu links */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-left: auto;
+}
+
+.site-nav a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover { color: var(--text); }
+
+/* The link of the section you are viewing now */
+.site-nav a.active {
+  color: var(--ember);
+}
+
+/* The Contact link looks like a button */
+.nav-cta {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--button-bg);
+  color: var(--button-text) !important;
+  font-weight: 600 !important;
+}
+
+.nav-cta:hover { color: var(--button-text) !important; opacity: 0.9; }
+
+/* Active Contact link gets an outline */
+.nav-cta.active {
+  box-shadow: 0 0 0 2px var(--ember);
+}
+
+/* The hidden checkbox for the phone menu. We never see it. */
+.nav-toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The hamburger button (3 lines). Only shown on phones. */
+.nav-toggle-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.nav-toggle-btn span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text);
+  border-radius: 2px;
+}
+
+/* ==============================
+ LIGHT / DARK BUTTON
+ ============================== */
+.theme-btn {
+  margin-left: 20px;
+  padding: 6px 14px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.theme-btn:hover { border-color: var(--ember); }
+
+/* ==============================
+ BUTTONS
+ ============================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+
+.btn-primary {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
+.btn-primary:hover { opacity: 0.92; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-outline:hover { border-color: var(--ice); color: var(--ice); }
+
+/* ==============================
+ TOP SECTION (HOME)
+ ============================== */
+.hero {
+  padding: 96px 0 72px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* Small label above the name */
+.eyebrow-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ice);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.hero-text {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 44ch;
+  margin-bottom: 28px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.tag-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ember);
+}
+
+/* Small box on the right side */
+.hero-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.hero-card-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 0;
+}
+
+.hero-card-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.hero-card-value {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.hero-card-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+/* ==============================
+ SECTIONS
+ Common style for About, Skills, Services,
+ Portfolio and Contact.
+ ============================== */
+.section {
+  padding: 88px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Some sections have a slightly different background */
+.section-alt {
+  background: var(--surface);
+}
+
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ice);
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2.2rem;
+  margin-bottom: 14px;
+}
+
+.section-lead {
+  color: var(--muted);
+  max-width: 60ch;
+  margin-bottom: 40px;
+}
+
+/* 3 boxes in one row */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* A single box */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;   /* all boxes in a row get the same height */
+}
+
+/* Boxes inside the different background sections */
+.section-alt .card {
+  background: var(--surface-2);
+}
+
+.card:hover {
+  border-color: var(--ember);
+  transform: translateY(-3px);
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  color: var(--muted);
+  font-size: 0.92rem;
+  flex-grow: 1;   /* text fills the empty space, so the link stays at the bottom */
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--ice);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
+/* Puts the link at the bottom of the Services box */
+.card-service .card-link {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.card-link:hover { color: var(--ember); }
+
+/* ==============================
+ SKILLS LIST
+ A numbered list with a line connecting the numbers.
+ ============================== */
+.trail {
+  position: relative;
+  max-width: 420px;
+  padding-left: 28px;
+}
+
+/* The vertical line behind the numbers */
+.trail::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--ember), var(--ice));
+}
+
+.trail-step {
+  position: relative;
+  padding: 12px 0;
+}
+
+.trail-marker {
+  position: absolute;
+  left: -28px;
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--ember);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ember);
+}
+
+.trail-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* ==============================
+ CONTACT SECTION
+ ============================== */
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Puts the contact box in the middle */
+.contact-card-solo {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+}
+
+.inline-link {
+  color: var(--ice);
+  font-weight: 600;
+}
+
+.inline-link:hover { color: var(--ember); }
+
+.contact-card-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.contact-gmail-btn,
+.contact-email-btn {
+  flex: 1 1 160px;
+}
+
+/* ==============================
+ FOOTER (bottom of the page)
+ ============================== */
+.site-footer {
+  padding: 48px 0 24px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.footer-logo { margin-bottom: 6px; }
+
+.footer-tagline {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.footer-nav a:hover { color: var(--ember); }
+
+.footer-email-btn {
+  flex-shrink: 0;
+}
+
+.footer-copyright {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-top: 20px;
+}
+
+/* ==============================
+ SMALL SCREENS
+ The rules below change the layout for tablets and phones.
+ ============================== */
+@media (max-width: 860px) {
+  /* hero text and box come one below the other */
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* 2 boxes in one row */
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Phones */
+@media (max-width: 640px) {
+  /* 1 box in one row */
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  /* show the hamburger button */
+  .nav-toggle-btn {
+    display: flex;
+    margin-left: 12px;
+  }
+
+  /* the Dark/Light button sits next to the hamburger button */
+  .theme-btn {
+    margin-left: auto;
+  }
+
+  /* the menu links become a hidden dropdown */
+  .site-nav {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px 20px;
+    margin-left: 0;
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+  }
+
+  .site-nav a {
+    padding: 10px 0;
+    width: 100%;
+  }
+
+  /* when the hidden checkbox is checked, show the dropdown */
+  .nav-toggle-input:checked ~ .site-header .site-nav {
+    max-height: 320px;
+    opacity: 1;
+  }
+}
